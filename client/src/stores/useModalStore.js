@@ -4,7 +4,7 @@ export const useProjectModalStore = defineStore("projectModal", {
     state: () => ({
         isOpen: false,
         /** 
-         * @type {null | { title: string, description: string, techStack: string, recommendation: string, img: string }}
+         * @type {null | { title: string, description: string, techStack: string, highlight: string, img: string }}
          */
         item: null,
     }),
@@ -19,7 +19,7 @@ export const useProjectModalStore = defineStore("projectModal", {
             this.isOpen = !this.isOpen;
         },
         /**
-         * @param {{ title: string, description: string, techStack: string, recommendation: string, img: string }} item
+         * @param {{ title: string, description: string, techStack: string, highlight: string, img: string }} item
          */
         setItem(item) {
             this.item = item;

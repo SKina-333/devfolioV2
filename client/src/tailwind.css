@@ -409,6 +409,9 @@
   .overflow-clip {
     overflow: clip;
   }
+  .overflow-hidden {
+    overflow: hidden;
+  }
   .overflow-x-clip {
     overflow-x: clip;
   }

@@ -33,11 +33,32 @@ import github from "../assets/others/github.svg?url";
 import linux from "../assets/others/linux.svg?url";
 import miro from "../assets/others/miro.svg?url";
 import postman from "../assets/others/postman.svg?url";
+
+import { onMounted, useTemplateRef } from "vue";
+import { animate, inView, stagger } from "motion-v";
+
+const containerRef = useTemplateRef("containerRef");
+onMounted(() => {
+  if (!containerRef.value) return;
+  const children = containerRef.value.children as HTMLCollection;
+  inView(containerRef.value as HTMLElement, () => {
+    animate(
+      Array.from(children),
+      { opacity: [0, 1], x: [-80, 0] },
+      {
+        type: "spring",
+        duration: 3,
+        bounce: 0,
+        delay: stagger(0.3, { startDelay: 0.5 }),
+      }
+    );
+  });
+});
 </script>
 
 <template>
   <div class="h-dvh overflow-x-clip p-5">
-    <div class="flex flex-col justify-between p-14 h-full">
+    <div ref="containerRef" class="flex flex-col justify-between p-14 h-full">
       <TechTemplate
         title="FRONTEND"
         :icons="[
@@ -72,15 +93,7 @@ import postman from "../assets/others/postman.svg?url";
       />
       <TechTemplate
         title="OTHERS"
-        :icons="[
-          docker,
-          gcloud,
-          git,
-          github,
-          linux,
-          miro,
-          postman,
-        ]"
+        :icons="[docker, gcloud, git, github, linux, miro, postman]"
       />
     </div>
   </div>

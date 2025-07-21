@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.1.11",
+    "gsap": "^3.13.0",
     "motion-plus": "^1.4.1",
     "motion-v": "^1.5.0",
     "pinia": "^3.0.3",

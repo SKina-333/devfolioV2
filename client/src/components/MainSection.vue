@@ -36,8 +36,8 @@ onMounted(() => {
     const github = containerRef.value.querySelector("#github");
     const cv = containerRef.value.querySelector("#cv");
 
-    if (!(pro || desc || email || arrow || line || linkedin || github || cv)) return;
-
+    if (!(pro || desc || email || arrow || line || linkedin || github || cv))
+      return;
 
     animate(
       pro,
@@ -46,7 +46,7 @@ onMounted(() => {
         type: "spring",
         duration: 3,
         bounce: 0,
-        delay:  1,
+        delay: 1,
       }
     );
     animate(
@@ -56,7 +56,7 @@ onMounted(() => {
         type: "spring",
         duration: 3,
         bounce: 0,
-        delay: 1.2 ,
+        delay: 1.2,
       }
     );
     animate(
@@ -172,7 +172,11 @@ onMounted(() => {
         </div>
       </div>
       <div class="p-14 flex flex-row items-center gap-5">
-        <div id="linkedin" @:click="openLinkedIn" class="w-[40px] h-[40px] cursor-pointer">
+        <div
+          id="linkedin"
+          @:click="openLinkedIn"
+          class="w-[40px] h-[40px] cursor-pointer"
+        >
           <motion.svg
             height="40"
             width="40"
@@ -228,7 +232,14 @@ onMounted(() => {
           </motion.svg>
         </div>
 
-        <div id="cv">
+        <motion.div
+          :whileHover="{
+            scale: 1.1,
+            transition: { duration: 0.5, type: 'spring' },
+          }"
+          :whilePress="{ scale: 0.9 }"
+          id="cv"
+        >
           <a
             href="../../public/CV-SOKINAHO.pdf"
             download
@@ -236,7 +247,7 @@ onMounted(() => {
           >
             Grab my CV
           </a>
-        </div>
+        </motion.div>
       </div>
     </div>
   </div>

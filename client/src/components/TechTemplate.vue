@@ -23,6 +23,7 @@ onMounted(() => {
   if (!containerRef.value) return;
   const children = containerRef.value.children
   inView(children, () => {
+    Array.from(children).forEach(child => child.querySelector("#tag").classList.remove("invisible"));
     animate(
       Array.from(children),
       { opacity: [0, 1], y: [30, 0] },
@@ -30,7 +31,7 @@ onMounted(() => {
         type: "spring",
         duration: 3,
         bounce: 0,
-        delay: stagger(0.3, { startDelay: 1.5 }),
+        delay: stagger(0.3, { startDelay: 0.5 }),
       }
     );
   });
@@ -46,7 +47,7 @@ onMounted(() => {
       <ul ref="containerRef" class="flex flex-row gap-10 flex-wrap">
 
         <li v-for="(icon, index) in icons" :key="index">
-          <div class="w-[45px] h-[45px]">
+          <div id="tag" class="w-[45px] h-[45px] invisible">
             <img :src="icon" alt=" Icon" />
           </div>
         </li>
